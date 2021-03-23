@@ -84,6 +84,7 @@ Window {
                 y: 18
                 text: "Write"
                 onClicked: {
+                    //TODO: Debug Test, REMOVE
                     main.sayMyName("Bryan")
                 }
             }
@@ -159,6 +160,7 @@ Window {
                 onClicked: {
                     fileField.clear()
                     textArea.clear()
+                    main.print("Cleared All Fields!")
                 }
             }
         }

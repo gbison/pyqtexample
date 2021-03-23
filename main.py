@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     # Get Context
     mainApp = MainApp()                 # Instantiate our main application runner
-    mainApp.app = app                   # Store object for use in other classes
+    mainApp.application = app                   # Store object for use in other classes
 
     # Here we tie the front end TARGET in QML to the backend application
     engine.rootContext().setContextProperty("main", mainApp)
