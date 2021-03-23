@@ -8,18 +8,18 @@ from PyQt5.QtQml import QQmlApplicationEngine
 
 from mainapp import MainApp
 
-app = nothing
-
 if __name__ == "__main__":
-    app = QGuiApplication(sys.argv)
-    engine = QQmlApplicationEngine()
+    app = QGuiApplication(sys.argv)     # Setup QGUI application for QT
+    engine = QQmlApplicationEngine()    # Initialize the QML application engine
 
     # Get Context
-    mainApp = MainApp()
-    mainApp.app = app
+    mainApp = MainApp()                 # Instantiate our main application runner
+    mainApp.app = app                   # Store object for use in other classes
+
+    # Here we tie the front end TARGET in QML to the backend application
     engine.rootContext().setContextProperty("main", mainApp)
 
-    # Load QML File
+    # Load QML GUI File into QML engine and we are up
     engine.load(os.path.join(os.path.dirname(__file__), "main.qml"))
 
     if not engine.rootObjects():

@@ -1,5 +1,3 @@
-import sys
-
 import nothing as nothing
 from PyQt5.QtCore import QObject, pyqtSlot, QUrl, pyqtSignal
 
@@ -9,7 +7,8 @@ class MainApp(QObject):
     filePath = nothing
     app = nothing
 
-    # We must send signals back to the QML model in order to facilitate communications.
+    # Must send signals to the QML model in order to facilitate communications.
+    # Variable data you want to pass to the front, should be a signal object.
     readText = pyqtSignal(str)
     readPath = pyqtSignal(str)
 
