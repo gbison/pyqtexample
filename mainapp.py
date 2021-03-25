@@ -28,35 +28,45 @@ class MainApp(QObject):
 
     @pyqtSlot()
     def welcomeText(self):
+        """Example Method Call"""
         print("Clicked")
 
     @pyqtSlot(str)
     def sayMyName(self, name):
+        """Another Example Method Call"""
         print(name)
 
     @pyqtSlot()
     def closeApp(self):
+        """Closes the MainApp context allowing exit to main."""
         self.log.info("Application Exiting Gracefully!")
         self.application.exit(0)
 
     @pyqtSlot(str)
-    def print(self, msg):
+    def print(self, msg: str):
+        """Used to log messages from QML side.
+
+        :parameter msg
+        :returns
+        :raises IOError
+        """
         print(msg)
         self.log.info(msg)
 
     @pyqtSlot(str)
-    def openFile(self, filePath):
+    def openFile(self, filepath: str):
+        """Opens file based on URL filepath specified"""
         try:
-            file = open(QUrl(filePath).toLocalFile(), encoding="utf-8")
+            file = open(QUrl(filepath).toLocalFile(), encoding="utf-8")
             self.fileText = str(file.read())
-            self.log.info("File Opened & Read: " + filePath)
-            self.readText.emit(str(self.fileText)) # Pushes a call to the front end Connections
+            self.log.info("File Opened & Read: " + filepath)
+            self.readText.emit(str(self.fileText))  # Pushes a call to the front end Connections
         except Exception as err:
             self.log.error("There was an ERROR in opening the file, check file path!")
             raise err("File Error - Main App (OpenFile)")
         finally:
             file.close()
-            self.log.info("File Closed: " + filePath)
+            self.log.info("File Closed: " + filepath)
 
     @pyqtSlot()
     def getFileText(self) -> str:
