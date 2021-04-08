@@ -31,7 +31,7 @@ class MainApp(QObject):
     @pyqtSlot()
     def welcomeText(self):
         """Example Method Call"""
-        print("Clicked")
+        print("Clicked Successfully.")
 
     @pyqtSlot(str)
     def sayMyName(self, name):
